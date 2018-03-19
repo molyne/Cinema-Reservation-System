@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using demo.Models;
+using CinemaReservationSystem.Models;
 
-namespace demo.Controllers
+namespace CinemaReservationSystem.Controllers
 {
     public class HomeController : Controller
     {

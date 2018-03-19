@@ -1,6 +1,6 @@
 using System;
 
-namespace demo.Models
+namespace CinemaReservationSystem.Models
 {
     public class ErrorViewModel
     {
