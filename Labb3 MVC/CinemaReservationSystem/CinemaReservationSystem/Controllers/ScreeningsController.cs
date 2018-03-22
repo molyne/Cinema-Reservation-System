@@ -20,9 +20,15 @@ namespace CinemaReservationSystem.Controllers
         }
 
         // GET: Screenings
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Screenings.ToListAsync());
+
+            //var item = _context.Screenings.FirstOrDefault();
+            //    ViewData["ScreeningTime"] = item.ScreeningTime;  // skicka värde
+            //    ViewData["ScreeningMovie"] = item.Movie;
+            //return View(item);  // skicka objekt
+
+            return View(_context.Screenings.ToList());
         }
 
         // GET: Screenings/Details/5
