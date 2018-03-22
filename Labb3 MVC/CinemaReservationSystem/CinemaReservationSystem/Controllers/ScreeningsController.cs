@@ -23,12 +23,12 @@ namespace CinemaReservationSystem.Controllers
         public IActionResult Index()
         {
 
-            //var item = _context.Screenings.FirstOrDefault();
-            //    ViewData["ScreeningTime"] = item.ScreeningTime;  // skicka värde
-            //    ViewData["ScreeningMovie"] = item.Movie;
-            //return View(item);  // skicka objekt
+            var screenings = _context.Screenings
+                .Include(s => s.Auditorium)
+                .Include(m => m.Movie)
+                .AsNoTracking();
 
-            return View(_context.Screenings.ToList());
+            return View(screenings.ToList());
         }
 
         // GET: Screenings/Details/5
@@ -92,9 +92,9 @@ namespace CinemaReservationSystem.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ScreeningTime")] Screening screening)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NoOfSeats")] Auditorium auditorium)
         {
-            if (id != screening.Id)
+            if (id != auditorium.Id)
             {
                 return NotFound();
             }
@@ -103,12 +103,12 @@ namespace CinemaReservationSystem.Controllers
             {
                 try
                 {
-                    _context.Update(screening);
+                    _context.Update(auditorium);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ScreeningExists(screening.Id))
+                    if (!ScreeningExists(auditorium.Id))
                     {
                         return NotFound();
                     }
@@ -119,7 +119,7 @@ namespace CinemaReservationSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(screening);
+            return View(auditorium);
         }
 
         // GET: Screenings/Delete/5

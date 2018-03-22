@@ -13,17 +13,20 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.ScreeningTime)
+                    @Html.DisplayNameFor(model => model.Movie.Title)
                 </th>
-            <th></th>
+                <th>@Html.DisplayNameFor(model => model.Auditorium.Name)</th>
+            <th>@Html.DisplayNameFor(model=>model.ScreeningTime)</th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ScreeningTime,item.Movie)
+                @Html.DisplayFor(modelItem => item.Movie.Title)
             </td>
+            <td>  @Html.DisplayFor(modelItem => item.Auditorium.Name)</td>
+            <td> @Html.DisplayFor(modelItem => item.ScreeningTime)</td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
