@@ -8,9 +8,9 @@ namespace CinemaReservationSystem.Models
     public class ReservedSeat
     {
         public int Id { get; set; }
-        public virtual Seat Seat { get; set; }
-        public virtual Reservation Reservation { get; set; }
-        public virtual Screening Screening { get; set; }
+        public Seat Seat { get; set; }
+        public Reservation Reservation { get; set; }
+        public Screening Screening { get; set; }
         
     }
 }

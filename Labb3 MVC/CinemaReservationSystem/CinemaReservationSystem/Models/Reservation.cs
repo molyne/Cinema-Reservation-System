@@ -8,6 +8,6 @@ namespace CinemaReservationSystem.Models
     public class Reservation
     {
         public int Id { get; set; }
-        public virtual IList<ReservedSeat> ReservedSeats { get; set; }
+        public IList<ReservedSeat> ReservedSeats { get; set; }
     }
 }

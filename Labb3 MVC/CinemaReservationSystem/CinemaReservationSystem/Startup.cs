@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,6 +23,9 @@ namespace CinemaReservationSystem
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            string cs = Configuration.GetConnectionString("CinemaBookingDB");
+            services.AddDbContext<CinemaContext>(options =>
+                options.UseSqlServer(cs));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

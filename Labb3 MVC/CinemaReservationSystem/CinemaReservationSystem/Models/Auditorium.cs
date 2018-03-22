@@ -9,5 +9,6 @@ namespace CinemaReservationSystem.Models
     {
         public int Id { get; set; }
         public int NoOfSeats { get; set; }
+        public int NoOfFreeSeats { get; set; }
     }
 }

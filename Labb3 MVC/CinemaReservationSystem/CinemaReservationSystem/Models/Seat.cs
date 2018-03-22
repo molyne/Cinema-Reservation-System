@@ -10,6 +10,6 @@ namespace CinemaReservationSystem.Models
         public int Id { get; set; }
         public int Row { get; set; }
         public int Number { get; set; }
-        public virtual Auditorium Auditorium { get; set; }
+        public Auditorium Auditorium { get; set; }
     }
 }

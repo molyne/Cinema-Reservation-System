@@ -8,8 +8,8 @@ namespace CinemaReservationSystem.Models
     public class Screening
     {
         public int Id { get; set; }
-        public virtual Movie Movie { get; set; }
-        public virtual Auditorium Auditorium { get; set; }
+        public Movie Movie { get; set; }
+        public Auditorium Auditorium { get; set; }
         public DateTime ScreeningTime { get; set; }
     }
 }
