@@ -30,7 +30,16 @@ namespace CinemaReservationSystem.Controllers
 
             return View(screenings.ToList());
         }
+        [HttpGet]
+        public IActionResult Book()
+        {
+            ViewData["Test"] = "Test hej";
+            return View();
+        }
+       
+
     }
+       
 }
 
        
