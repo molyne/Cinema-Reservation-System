@@ -78,7 +78,12 @@ namespace CinemaReservationSystem.Controllers
             updateSeats.ReservedSeats-= tickets;
 
             _context.Update(updateSeats);
-
+            var reservation = new Reservation
+            {
+                Screening = bookedScreening,
+                Tickets = tickets
+            };
+            _context.Reservations.Add(reservation);
             _context.SaveChanges();
 
             if (bookedScreening == null)
@@ -86,7 +91,7 @@ namespace CinemaReservationSystem.Controllers
                 return NotFound();
             }
 
-            return View(bookedScreening);
+            return View(reservation);
         }
 
     }
