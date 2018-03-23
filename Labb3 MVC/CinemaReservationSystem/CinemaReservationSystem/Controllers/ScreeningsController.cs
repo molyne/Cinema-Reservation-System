@@ -20,14 +20,38 @@ namespace CinemaReservationSystem.Controllers
         }
 
         // GET: Screenings
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder)
         {
+
+            //var screenings = _context.Screenings
+            //    .Include(s => s.Auditorium)
+            //    .Include(m => m.Movie).OrderBy(o=>o.ScreeningTime)
+            //    .AsNoTracking();
+
+            //return View(await screenings.ToListAsync());
+
+
+            
 
             var screenings = _context.Screenings
                 .Include(s => s.Auditorium)
-                .Include(m => m.Movie).OrderBy(o=>o.ScreeningTime)
+                .Include(m => m.Movie).OrderBy(o => o.ScreeningTime)
                 .AsNoTracking();
-
+            if (!String.IsNullOrEmpty(sortOrder))
+            {
+                switch (sortOrder)
+                {
+                    case "timeSort":
+                        screenings = screenings.OrderBy(s => s.ScreeningTime);
+                        break;
+                    case "seatSort":
+                        screenings = screenings.OrderBy(s => s.ReservedSeats);
+                        break;
+                    default:
+                        screenings = screenings.OrderBy(s => s.ScreeningTime);
+                        break;
+                }
+            }
             return View(await screenings.ToListAsync());
         }
         [HttpPost]
