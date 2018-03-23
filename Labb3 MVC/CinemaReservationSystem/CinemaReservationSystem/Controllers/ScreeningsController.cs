@@ -30,6 +30,15 @@ namespace CinemaReservationSystem.Controllers
 
             return View(await screenings.ToListAsync());
         }
+        [HttpPost]
+        public IActionResult ChangedOrder(bool selectOrder)
+        {
+            var screenings = _context.Screenings
+                .Include(s => s.Auditorium)
+                .Include(m => m.Movie).OrderBy(o => o.Movie.Title)
+                .AsNoTracking();
+            return View(screenings.ToList());
+        }
        
         [HttpGet]
         public async Task<IActionResult> Book(int? id)
@@ -64,11 +73,12 @@ namespace CinemaReservationSystem.Controllers
                 .Include(m => m.Movie).
                 SingleOrDefault(m => m.Id == id);
 
-          var updateAuditorium =  bookedScreening.Auditorium;
+          var updateSeats =  bookedScreening;
 
-            updateAuditorium.NoOfFreeSeats -= tickets;
+            updateSeats.ReservedSeats-= tickets;
 
-            _context.Update(updateAuditorium);
+            _context.Update(updateSeats);
+
             _context.SaveChanges();
 
             if (bookedScreening == null)

@@ -8,6 +8,7 @@ namespace CinemaReservationSystem.Models
     public class Reservation
     {
         public int Id { get; set; }
-        public IList<ReservedSeat> ReservedSeats { get; set; }
+        public int Tickets { get; set; }
+        public Screening Screening { get; set; }
     }
 }

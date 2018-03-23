@@ -11,9 +11,10 @@ using System;
 namespace CinemaReservationSystem.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    partial class CinemaContextModelSnapshot : ModelSnapshot
+    [Migration("20180323173209_AddedReservedSeats")]
+    partial class AddedReservedSeats
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,13 +58,7 @@ namespace CinemaReservationSystem.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("ScreeningId");
-
-                    b.Property<int>("Tickets");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ScreeningId");
 
                     b.ToTable("Reservations");
                 });
@@ -130,17 +125,10 @@ namespace CinemaReservationSystem.Migrations
                     b.ToTable("Seats");
                 });
 
-            modelBuilder.Entity("CinemaReservationSystem.Models.Reservation", b =>
-                {
-                    b.HasOne("CinemaReservationSystem.Models.Screening", "Screening")
-                        .WithMany()
-                        .HasForeignKey("ScreeningId");
-                });
-
             modelBuilder.Entity("CinemaReservationSystem.Models.ReservedSeat", b =>
                 {
                     b.HasOne("CinemaReservationSystem.Models.Reservation", "Reservation")
-                        .WithMany()
+                        .WithMany("ReservedSeats")
                         .HasForeignKey("ReservationId");
 
                     b.HasOne("CinemaReservationSystem.Models.Screening", "Screening")

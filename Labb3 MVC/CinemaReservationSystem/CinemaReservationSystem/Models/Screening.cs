@@ -15,5 +15,6 @@ namespace CinemaReservationSystem.Models
         [DisplayFormat(DataFormatString = "{0:HH:mm}", ApplyFormatInEditMode = true)]
         [DisplayName("Time")]
         public DateTime ScreeningTime { get; set; }
+        public int ReservedSeats { get; set; }
     }
 }
