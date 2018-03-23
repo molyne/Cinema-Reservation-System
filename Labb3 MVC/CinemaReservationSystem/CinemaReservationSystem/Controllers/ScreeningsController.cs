@@ -20,7 +20,7 @@ namespace CinemaReservationSystem.Controllers
         }
 
         // GET: Screenings
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
             var screenings = _context.Screenings
@@ -28,13 +28,28 @@ namespace CinemaReservationSystem.Controllers
                 .Include(m => m.Movie)
                 .AsNoTracking();
 
-            return View(screenings.ToList());
+            return View(await screenings.ToListAsync());
         }
+       
         [HttpGet]
-        public IActionResult Book()
+        public async Task<IActionResult> Book(int? id)
         {
-            ViewData["Test"] = "Test hej";
-            return View();
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var choosenScreening =  _context.Screenings
+                .Include(s => s.Auditorium)
+                .Include(m => m.Movie).
+                SingleOrDefaultAsync(m => m.Id == id);
+          
+            if (choosenScreening == null)
+            {
+                return NotFound();
+            }
+
+            return View(await choosenScreening);
         }
        
 

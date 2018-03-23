@@ -13,6 +13,7 @@ namespace CinemaReservationSystem.Models
         [DisplayName("Auditorium")]
         public string Name { get; set; }
         public int NoOfSeats { get; set; }
+        [DisplayName("Tickets left")]
         public int NoOfFreeSeats { get; set; }
     }
 }

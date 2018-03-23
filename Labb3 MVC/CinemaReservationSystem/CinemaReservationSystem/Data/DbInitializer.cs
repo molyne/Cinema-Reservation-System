@@ -27,12 +27,15 @@ namespace CinemaReservationSystem.Data
             var Auditorium1 = new Models.Auditorium
             {
                 Name = "Saloon 1",
-               NoOfSeats = 50 
+               NoOfSeats = 50,
+               NoOfFreeSeats = 50
+               
             };
             var Auditorium2 = new Models.Auditorium
             {
                 Name = "Saloon 2",
-                NoOfSeats = 100
+                NoOfSeats = 100,
+                NoOfFreeSeats= 100
             };
             
             var screenings = new Models.Screening[]
