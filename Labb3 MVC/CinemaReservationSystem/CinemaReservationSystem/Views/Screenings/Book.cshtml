@@ -2,5 +2,8 @@
 @{  
         @Html.DisplayFor(model => model.Movie.Title)   
 }
-
+<form asp-action="Reservation" asp-route-id="@Model.Id" asp-controller="Screenings">
+    <input type="number" name="tickets" min="1" max="12" value="1" />
+    <input type="submit" value="Book" />
+</form>
 

@@ -25,7 +25,7 @@ namespace CinemaReservationSystem.Controllers
 
             var screenings = _context.Screenings
                 .Include(s => s.Auditorium)
-                .Include(m => m.Movie)
+                .Include(m => m.Movie).OrderBy(o=>o.ScreeningTime)
                 .AsNoTracking();
 
             return View(await screenings.ToListAsync());
@@ -51,7 +51,33 @@ namespace CinemaReservationSystem.Controllers
 
             return View(await choosenScreening);
         }
-       
+        [HttpPost]
+        public IActionResult Reservation(int? id,int tickets)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var bookedScreening = _context.Screenings
+                .Include(s => s.Auditorium)
+                .Include(m => m.Movie).
+                SingleOrDefault(m => m.Id == id);
+
+          var updateAuditorium =  bookedScreening.Auditorium;
+
+            updateAuditorium.NoOfFreeSeats -= tickets;
+
+            _context.Update(updateAuditorium);
+            _context.SaveChanges();
+
+            if (bookedScreening == null)
+            {
+                return NotFound();
+            }
+
+            return View(bookedScreening);
+        }
 
     }
        

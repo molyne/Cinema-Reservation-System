@@ -1,0 +1,14 @@
+﻿@model CinemaReservationSystem.Models.Screening
+
+@{
+    @ViewData["Info"];
+    <br/>
+    @Html.DisplayFor(model => model.Movie.Title)
+    <br/>
+    @Html.DisplayFor(model => model.Id)
+    <br/>
+    @Html.DisplayFor(model => model.ScreeningTime)
+    <br/>
+    @Html.DisplayFor(model => model.Auditorium.Name)
+
+}
