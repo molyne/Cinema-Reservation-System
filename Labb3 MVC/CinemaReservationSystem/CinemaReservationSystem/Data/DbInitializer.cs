@@ -47,19 +47,19 @@ namespace CinemaReservationSystem.Data
 
             var screenings = new Models.Screening[]
             {
-                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 12:15:00"), Movie=movies[0], Auditorium=Auditorium1, ReservedSeats=Auditorium1.NoOfSeats },
+                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 12:15:00"), Movie=movies[0], Auditorium=Auditorium1,TicketsLeft=Auditorium1.NoOfSeats },
 
-                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 12:30:00"), Movie=movies[1], Auditorium=Auditorium2, ReservedSeats=Auditorium2.NoOfSeats },
+                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 12:30:00"), Movie=movies[1], Auditorium=Auditorium2,TicketsLeft=Auditorium2.NoOfSeats },
 
-                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 15:45:00"), Movie=movies[2], Auditorium=Auditorium1, ReservedSeats=Auditorium1.NoOfSeats },
+                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 15:45:00"), Movie=movies[2], Auditorium=Auditorium1,TicketsLeft=Auditorium1.NoOfSeats },
 
-                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 15:00:00"), Movie=movies[3], Auditorium=Auditorium2, ReservedSeats=Auditorium2.NoOfSeats },
+                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 15:00:00"), Movie=movies[3], Auditorium=Auditorium2,TicketsLeft=Auditorium2.NoOfSeats },
 
-                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 17:30:00"), Movie=movies[4], Auditorium=Auditorium1, ReservedSeats=Auditorium1.NoOfSeats },
+                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 17:30:00"), Movie=movies[4], Auditorium=Auditorium1, TicketsLeft=Auditorium1.NoOfSeats },
 
-                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 18:00:00"), Movie=movies[5], Auditorium=Auditorium2, ReservedSeats=Auditorium2.NoOfSeats },
+                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 18:00:00"), Movie=movies[5], Auditorium=Auditorium2, TicketsLeft=Auditorium2.NoOfSeats },
 
-                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 21:00:00"), Movie=movies[6], Auditorium=Auditorium1, ReservedSeats=Auditorium1.NoOfSeats }
+                new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 21:00:00"), Movie=movies[6], Auditorium=Auditorium1, TicketsLeft=Auditorium1.NoOfSeats }
             };
           
             

@@ -11,9 +11,10 @@ using System;
 namespace CinemaReservationSystem.Migrations
 {
     [DbContext(typeof(CinemaContext))]
-    partial class CinemaContextModelSnapshot : ModelSnapshot
+    [Migration("20180325142432_AddedRangeTickets")]
+    partial class AddedRangeTickets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -99,9 +100,9 @@ namespace CinemaReservationSystem.Migrations
 
                     b.Property<int?>("MovieId");
 
-                    b.Property<DateTime>("ScreeningTime");
+                    b.Property<int>("ReservedSeats");
 
-                    b.Property<int>("TicketsLeft");
+                    b.Property<DateTime>("ScreeningTime");
 
                     b.HasKey("Id");
 

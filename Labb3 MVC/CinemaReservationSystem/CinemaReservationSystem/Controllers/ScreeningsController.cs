@@ -45,7 +45,7 @@ namespace CinemaReservationSystem.Controllers
                         screenings = screenings.OrderBy(s => s.ScreeningTime);
                         break;
                     case "seatSort":
-                        screenings = screenings.OrderBy(s => s.ReservedSeats);
+                        screenings = screenings.OrderBy(s => s.TicketsLeft);
                         break;
                     default:
                         screenings = screenings.OrderBy(s => s.ScreeningTime);
@@ -99,7 +99,7 @@ namespace CinemaReservationSystem.Controllers
 
           var updateSeats =  bookedScreening;
 
-            updateSeats.ReservedSeats-= tickets;
+            updateSeats.TicketsLeft-= tickets;
 
             _context.Update(updateSeats);
             var reservation = new Reservation
