@@ -42,10 +42,10 @@ namespace CinemaReservationSystem.Controllers
                 switch (sortOrder)
                 {
                     case "timeSort":
-                        screenings = screenings.OrderBy(s => s.ScreeningTime);
+                        screenings = screenings.OrderByDescending(s => s.ScreeningTime);
                         break;
                     case "seatSort":
-                        screenings = screenings.OrderBy(s => s.TicketsLeft);
+                        screenings = screenings.OrderByDescending(s => s.TicketsLeft);
                         break;
                     default:
                         screenings = screenings.OrderBy(s => s.ScreeningTime);
