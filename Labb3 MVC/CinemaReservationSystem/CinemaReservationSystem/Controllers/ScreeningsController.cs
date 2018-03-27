@@ -104,10 +104,8 @@ namespace CinemaReservationSystem.Controllers
 
                 updateSeats.TicketsLeft -= tickets;
 
-            if (bookedScreening.TicketsLeft > 0)
+            if (bookedScreening.TicketsLeft >= 0)
             {
-
-
                 _context.Update(updateSeats);
                 var reservation = new Reservation
                 {
@@ -126,7 +124,8 @@ namespace CinemaReservationSystem.Controllers
             }
             else
             {
-                ViewData["ErrorInfo"] = "Not enough of tickets.";
+                updateSeats.TicketsLeft += tickets;
+                ViewData["ErrorInfo"] = "Only "+updateSeats.TicketsLeft+" tickets to the choosen movie left. Try again.";
                 return View("Book",bookedScreening);
             }
         }
