@@ -47,7 +47,7 @@ namespace CinemaReservationSystem
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Screenings}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
