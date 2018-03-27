@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<CinemaReservationSystem.Models.Screening>
 
+<link rel="stylesheet" type="text/css" href="~/css/StyleIndex.css">
 @{
     ViewData["Title"] = "Index";
 
 }
 
 <h2>Movies</h2>
-
 
 
 <table class="table">
@@ -29,10 +29,18 @@
             </td>
             <td>  @Html.DisplayFor(modelItem => item.Auditorium.Name)</td>
             <td> @Html.DisplayFor(modelItem => item.ScreeningTime)</td>
-            <td>@Html.DisplayFor(modelItem => item.TicketsLeft)</td>
-            <td>
+            @if (item.TicketsLeft>0)
+            {
+                <td>@Html.DisplayFor(modelItem => item.TicketsLeft)</td>
+                <td>
                 <a asp-action="Book" asp-route-id="@item.Id">Book tickets</a> 
-            </td>
+                </td>
+            }
+            else
+            {
+                <td class="fullSalong">@Html.DisplayFor(modelItem => item.TicketsLeft)</td>
+                <td>Fullbooked</td>
+            }
         </tr>
 }
     </tbody>
