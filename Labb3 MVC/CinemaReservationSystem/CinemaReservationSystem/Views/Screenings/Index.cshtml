@@ -33,13 +33,13 @@
             {
                 <td>@Html.DisplayFor(modelItem => item.TicketsLeft)</td>
                 <td>
-                <a asp-action="Book" asp-route-id="@item.Id">Book tickets</a> 
+                <a asp-action="Book" asp-route-id="@item.Id" class="links">Book tickets</a> 
                 </td>
             }
             else
             {
-                <td class="fullSalong">@Html.DisplayFor(modelItem => item.TicketsLeft)</td>
-                <td>Full booked</td>
+                <td class="text-danger">@Html.DisplayFor(modelItem => item.TicketsLeft)</td>
+                <td class="text-danger">Full booked</td>
             }
         </tr>
 }

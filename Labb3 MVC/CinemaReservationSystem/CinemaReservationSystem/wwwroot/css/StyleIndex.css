@@ -2,3 +2,16 @@
 .fullSalong{
     color:red;
 }
+.links{
+    text-decoration:none;
+    color:black;
+    font-weight:bold;
+}
+.links:hover{
+    text-decoration:none;
+    color:darkgrey;
+}
+td:last-child
+{
+    font-weight: bold;
+}
