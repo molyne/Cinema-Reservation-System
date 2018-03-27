@@ -3,13 +3,15 @@
 
 }
 <h2>Book tickets to @Html.DisplayFor(model => model.Movie.Title) </h2>
-<br/>
+<br />
 <strong>Date:</strong> 2018-03-25 <strong>Time:</strong> @Html.DisplayFor(model => model.ScreeningTime)
-<br/>
+<br />
 <em>Limited to 12.</em>
 <br />
 <form asp-action="Reservation" asp-route-id="@Model.Id" asp-controller="Screenings">
     <input type="number" name="tickets" min="1" max="12" value="1" />
     <input type="submit" value="Book" />
 </form>
+@ViewData["ErrorInfo"]
+
 

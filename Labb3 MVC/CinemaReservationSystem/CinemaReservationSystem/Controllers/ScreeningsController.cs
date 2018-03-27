@@ -68,6 +68,8 @@ namespace CinemaReservationSystem.Controllers
         public async Task<IActionResult> Book(int? id)
         {
 
+            ViewData["ErrorInfo"] ="";
+
             if (id == null)
             {
                 return NotFound();
@@ -81,6 +83,7 @@ namespace CinemaReservationSystem.Controllers
             {
                 return NotFound();
             }
+           
 
             return View(await choosenScreening);
         }
@@ -97,25 +100,35 @@ namespace CinemaReservationSystem.Controllers
                 .Include(m => m.Movie).
                 SingleOrDefault(m => m.Id == id);
 
-          var updateSeats =  bookedScreening;
+            var updateSeats = bookedScreening;
 
-            updateSeats.TicketsLeft-= tickets;
+                updateSeats.TicketsLeft -= tickets;
 
-            _context.Update(updateSeats);
-            var reservation = new Reservation
+            if (bookedScreening.TicketsLeft > 0)
             {
-                Screening = bookedScreening,
-                Tickets = tickets
-            };
-            _context.Reservations.Add(reservation);
-            _context.SaveChanges();
 
-            if (bookedScreening == null)
-            {
-                return NotFound();
+
+                _context.Update(updateSeats);
+                var reservation = new Reservation
+                {
+                    Screening = bookedScreening,
+                    Tickets = tickets
+                };
+                _context.Reservations.Add(reservation);
+                _context.SaveChanges();
+
+                if (bookedScreening == null)
+                {
+                    return NotFound();
+                }
+
+                return View(reservation);
             }
-
-            return View(reservation);
+            else
+            {
+                ViewData["ErrorInfo"] = "Not enough of tickets.";
+                return View("Book",bookedScreening);
+            }
         }
 
     }

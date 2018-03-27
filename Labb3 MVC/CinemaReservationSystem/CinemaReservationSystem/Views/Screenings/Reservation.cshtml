@@ -1,17 +1,19 @@
 ﻿@model CinemaReservationSystem.Models.Reservation
 
 @{
-    @ViewData["Info"];
 
+    @ViewData["Info"];
 
 }
 <h2>Booking confirmation</h2>
 <h4>Confirmation id: @Html.DisplayFor(model => model.Id)</h4>
 <p>Thank you for your reservation. Your details:</p>
 
-<strong>Date:</strong> 2018-03-25 <strong>Time:</strong> @Html.DisplayFor( model => model.Screening.ScreeningTime)
+<strong>Date:</strong> 2018-03-25 <strong>Time:</strong> @Html.DisplayFor(model => model.Screening.ScreeningTime)
 <br />
-<strong>Movie:</strong> @Html.DisplayFor( model => model.Screening.Movie.Title)
+<strong>Movie:</strong> @Html.DisplayFor(model => model.Screening.Movie.Title)
 <br />
 <strong>Auditorium:</strong>
- @Html.DisplayFor(model => model.Screening.Auditorium.Name)
+@Html.DisplayFor(model => model.Screening.Auditorium.Name)
+
+
