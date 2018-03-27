@@ -18,7 +18,7 @@
                 <th>@Html.DisplayNameFor(model => model.Auditorium.Name)</th>
             <th>@Html.DisplayNameFor(model=>model.ScreeningTime)</th>
             <th>Tickets left</th>
-            <th><strong>Sortby:</strong> <a asp-action="Index" asp-route-sortOrder="timeSort">@Html.DisplayNameFor(model => model.ScreeningTime)</a> | <a asp-action="Index" asp-route-sortOrder="seatSort">@Html.DisplayNameFor(model => model.TicketsLeft)</a> </th>
+            <th><strong>Sort:</strong> <a asp-action="Index" asp-route-sortOrder="timeSort" class="links">@Html.DisplayNameFor(model => model.ScreeningTime)</a> | <a asp-action="Index" asp-route-sortOrder="seatSort" class="links">@Html.DisplayNameFor(model => model.TicketsLeft)</a> </th>
         </tr>
     </thead>
     <tbody>
