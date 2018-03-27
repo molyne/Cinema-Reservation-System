@@ -7,7 +7,8 @@
 }
 <h2>Booking confirmation</h2>
 <h4>Confirmation id: @Html.DisplayFor(model => model.Id)</h4>
-<p>Thank you for your reservation. Your details:</p>
+<p>Thank you for your reservation. <br/>Your details:</p>
+<br/>
 
 <strong>Date:</strong> 2018-03-25 <strong>Time:</strong> @Html.DisplayFor(model => model.Screening.ScreeningTime)
 <br />
@@ -15,5 +16,8 @@
 <br />
 <strong>Auditorium:</strong>
 @Html.DisplayFor(model => model.Screening.Auditorium.Name)
+<br/>
+<strong>Tickets booked:</strong>
+@Html.DisplayFor(model => model.Tickets) in total.
 
 
