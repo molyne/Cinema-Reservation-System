@@ -8,7 +8,7 @@
 <p></p><em>Limited to 12.</em></p>
 <br />
 <form asp-action="Reservation" asp-route-id="@Model.Id" asp-controller="Screenings">
-    <input type="number" name="tickets" min="1" max="12" value="1" />
+    <input type="number" name="tickets" value="1" />
     <input type="submit" value="Book" />
 </form>
 <div class="text-danger">@ViewData["ErrorInfo"]</div>

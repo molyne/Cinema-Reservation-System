@@ -100,6 +100,12 @@ namespace CinemaReservationSystem.Controllers
                 .Include(m => m.Movie).
                 SingleOrDefault(m => m.Id == id);
 
+            if(tickets<1 || tickets > 12)
+            {
+                ViewData["ErrorInfo"] = "Tickets must be between 1 to 12. Try again!";
+                return View("Book", bookedScreening);
+
+            }
             var updateSeats = bookedScreening;
 
                 updateSeats.TicketsLeft -= tickets;
