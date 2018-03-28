@@ -2,15 +2,20 @@
 @{
 
 }
-<h2>Book tickets to @Html.DisplayFor(model => model.Movie.Title) </h2>
-<br />
-<strong>Date:</strong> 2018-03-25 <strong>Time:</strong> @Html.DisplayFor(model => model.ScreeningTime)
-<p></p><em>Limited to 12.</em></p>
-<br />
+<div>
+    <h2>Book tickets to @Html.DisplayFor(model => model.Movie.Title) </h2>
+    <br />
+    <strong>Date:</strong> 2018-03-25 <strong>Time:</strong> @Html.DisplayFor(model => model.ScreeningTime)
+    <em>Limited to 12.</em>
+</div>
+
 <form asp-action="Reservation" asp-route-id="@Model.Id" asp-controller="Screenings">
-    <input type="number" name="tickets" value="1" />
-    <input type="submit" value="Book" />
+    <div class="col-xs-2">
+        <input type="number" name="tickets" value="1" class="form-control" id="focusedInput" />
+    </div>
+    <input type="submit" value="Book" class="btn btn-primary" />
 </form>
+
 <div class="text-danger">@ViewData["ErrorInfo"]</div>
 
 
