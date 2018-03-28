@@ -22,17 +22,6 @@ namespace CinemaReservationSystem.Controllers
         // GET: Screenings
         public async Task<IActionResult> Index(string sortOrder)
         {
-
-            //var screenings = _context.Screenings
-            //    .Include(s => s.Auditorium)
-            //    .Include(m => m.Movie).OrderBy(o=>o.ScreeningTime)
-            //    .AsNoTracking();
-
-            //return View(await screenings.ToListAsync());
-
-
-            
-
             var screenings = _context.Screenings
                 .Include(s => s.Auditorium)
                 .Include(m => m.Movie).OrderBy(o => o.ScreeningTime)
@@ -54,43 +43,29 @@ namespace CinemaReservationSystem.Controllers
             }
             return View(await screenings.ToListAsync());
         }
-        [HttpPost]
-        public IActionResult ChangedOrder(bool selectOrder)
-        {
-            var screenings = _context.Screenings
-                .Include(s => s.Auditorium)
-                .Include(m => m.Movie).OrderBy(o => o.Movie.Title)
-                .AsNoTracking();
-            return View(screenings.ToList());
-        }
-       
         [HttpGet]
         public async Task<IActionResult> Book(int? id)
         {
-
-            ViewData["ErrorInfo"] ="";
+            ViewData["ErrorInfo"] = "";
 
             if (id == null)
             {
                 return NotFound();
             }
-            var choosenScreening =  _context.Screenings
+            var choosenScreening = _context.Screenings
                 .Include(s => s.Auditorium)
                 .Include(m => m.Movie).
                 SingleOrDefaultAsync(m => m.Id == id);
-          
+
             if (choosenScreening == null)
             {
                 return NotFound();
             }
-           
-
             return View(await choosenScreening);
         }
         [HttpPost]
-        public IActionResult Reservation(int? id,int tickets)
+        public IActionResult Reservation(int? id, int tickets)
         {
-
             if (id == null)
             {
                 return NotFound();
@@ -100,15 +75,14 @@ namespace CinemaReservationSystem.Controllers
                 .Include(m => m.Movie).
                 SingleOrDefault(m => m.Id == id);
 
-            if(tickets<1 || tickets > 12)
+            if (tickets < 1 || tickets > 12)
             {
                 ViewData["ErrorInfo"] = "Tickets must be between 1 to 12. Try again!";
                 return View("Book", bookedScreening);
-
             }
             var updateSeats = bookedScreening;
 
-                updateSeats.TicketsLeft -= tickets;
+            updateSeats.TicketsLeft -= tickets;
 
             if (bookedScreening.TicketsLeft >= 0)
             {
@@ -125,19 +99,16 @@ namespace CinemaReservationSystem.Controllers
                 {
                     return NotFound();
                 }
-
                 return View(reservation);
             }
             else
             {
                 updateSeats.TicketsLeft += tickets;
-                ViewData["ErrorInfo"] = "Only "+updateSeats.TicketsLeft+" tickets to the choosen movie left. Try again.";
-                return View("Book",bookedScreening);
+                ViewData["ErrorInfo"] = "Only " + updateSeats.TicketsLeft + " tickets to the choosen movie left. Try again.";
+                return View("Book", bookedScreening);
             }
         }
 
     }
-       
 }
 
-       

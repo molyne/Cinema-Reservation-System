@@ -25,7 +25,6 @@ namespace CinemaReservationSystem.Data
               new Models.Movie{Title="Batman", Genre="Action"},
               new Models.Movie{Title="Wonder", Genre="Drama"},
               new Models.Movie{Title="Thomb Raider", Genre="Horror"}
-
             };
             foreach (var m in movies)
             {
@@ -34,12 +33,12 @@ namespace CinemaReservationSystem.Data
             var Auditorium1 = new Models.Auditorium
             {
                 Name = "Saloon 1",
-               NoOfSeats = 50,         
+                NoOfSeats = 50,
             };
             var Auditorium2 = new Models.Auditorium
             {
                 Name = "Saloon 2",
-                NoOfSeats = 100,     
+                NoOfSeats = 100,
             };
 
             context.Auditoriums.Add(Auditorium1);
@@ -61,9 +60,6 @@ namespace CinemaReservationSystem.Data
 
                 new Models.Screening{ScreeningTime=DateTime.Parse("2018-03-03 21:00:00"), Movie=movies[6], Auditorium=Auditorium1, TicketsLeft=Auditorium1.NoOfSeats }
             };
-          
-            
-
             foreach (var s in screenings)
             {
                 context.Screenings.Add(s);
