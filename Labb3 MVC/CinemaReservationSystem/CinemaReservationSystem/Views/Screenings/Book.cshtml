@@ -10,7 +10,7 @@
 </div>
 
 <form asp-action="Reservation" asp-route-id="@Model.Id" asp-controller="Screenings">
-    <div class="col-xs-2">
+    <div class="col-xs-1" style="min-width:90px">
         <input type="number" name="tickets" value="1" class="form-control" id="focusedInput" />
     </div>
     <input type="submit" value="Book" class="btn btn-primary" />
